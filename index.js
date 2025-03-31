@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = 3000;
 
 app.post("/Get_TrafficDayLevel", (req, res) => {
+  console.log(req.body);
   res.send({
     Days: "Wednesday",
     Difference: -13.11,
@@ -15,6 +17,7 @@ app.post("/Get_TrafficDayLevel", (req, res) => {
 });
 
 app.post("/Get_TrafficMonthToDate", (req, res) => {
+  console.log(req.body);
   res.send({
     Days: "Week To Date",
     Difference: 11.1,
@@ -27,6 +30,7 @@ app.post("/Get_TrafficMonthToDate", (req, res) => {
 });
 
 app.post("/Get_TrafficLastMonth", (req, res) => {
+  console.log(req.body);
   res.send({
     Days: "Month To Date",
     Difference: 4.02,
@@ -39,6 +43,7 @@ app.post("/Get_TrafficLastMonth", (req, res) => {
 });
 
 app.post("/Get_TrafficLastYear", (req, res) => {
+  console.log(req.body);
   res.send({
     Days: "Year To Date",
     Difference: -1.09,
@@ -51,6 +56,7 @@ app.post("/Get_TrafficLastYear", (req, res) => {
 });
 
 app.post("/Get_TrafficHistoricalComparison", (req, res) => {
+  console.log(req.body);
   res.send({
     series: [
       {
@@ -91,6 +97,7 @@ app.post("/Get_TrafficHistoricalComparison", (req, res) => {
 });
 
 app.post("/Get_PredictedTraffic", (req, res) => {
+  console.log(req.body);
   res.send({
     series: [
       {
@@ -118,6 +125,7 @@ app.post("/Get_PredictedTraffic", (req, res) => {
 });
 
 app.post("/Get_TitleUndecided", (req, res) => {
+  console.log(req.body);
   res.send({
     data: [
       ["us-ma", 1636],
@@ -171,6 +179,7 @@ app.post("/Get_TitleUndecided", (req, res) => {
 });
 
 app.post("/Get_ComparisonWeeklyTrend", (req, res) => {
+  console.log(req.body);
   res.send({
     series: [
       {
@@ -215,6 +224,7 @@ app.post("/Get_ComparisonWeeklyTrend", (req, res) => {
 });
 
 app.post("/Get_ComparisonMonthlyTrend", (req, res) => {
+  console.log(req.body);
   res.send({
     series: [
       {
@@ -257,6 +267,8 @@ app.post("/Get_ComparisonMonthlyTrend", (req, res) => {
     text: "Traffic",
   });
 });
+
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
