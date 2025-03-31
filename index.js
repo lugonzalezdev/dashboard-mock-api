@@ -3,6 +3,17 @@ const app = express();
 const cors = require("cors");
 const port = 3000;
 
+app.use(cors());
+app.options("*", cors());
+
+app.all("*", function (req, res, next) {
+  console.log(":: REQUEST BODY ::", req.body);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 app.post("/Get_TrafficDayLevel", (req, res) => {
   console.log(req.body);
   res.send({
@@ -267,8 +278,6 @@ app.post("/Get_ComparisonMonthlyTrend", (req, res) => {
     text: "Traffic",
   });
 });
-
-app.use(cors());
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
