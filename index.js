@@ -4,13 +4,13 @@ const cors = require("cors");
 const port = 3000;
 
 app.use(cors());
-app.options("*", cors());
-
-app.all("*", function (req, res, next) {
+app.use(function (req, res, next) {
   console.log(":: REQUEST BODY ::", req.body);
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
