@@ -18,6 +18,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+//TrafficDashBoard
+
 app.post("/Get_TrafficDayLevel", (req, res) => {
   res.send({
     Days: "Wednesday",
@@ -115,6 +117,13 @@ app.post("/Get_PredictedTraffic", (req, res) => {
         dashStyle: "longdash",
         color: "#000",
         data: [5266.5, 16133, 13711, 13609.5, 13581, 15709.25, 12188.5],
+      },
+      {
+        type: "spline",
+        name: "last Predicted Traffic",
+        dashStyle: "longdash",
+        color: "#000",
+        data: [1266.5, 6133, 3711, 3609.5, 3581, 5709.25, 2188.5],
       },
     ],
     categories: [
@@ -271,6 +280,144 @@ app.post("/Get_ComparisonMonthlyTrend", (req, res) => {
     tooltip:
       "It will show this year and last year actual values except for traffic which will only show avg traffic.",
     text: "Traffic",
+  });
+});
+
+//--------------------------
+//ConversionDashboard
+
+app.post("/Get_ConversionDayLevel", (req, res) => {
+  res.send({
+    Days: "Wednesday",
+    Difference: -13.11,
+    Current: 15046,
+    Date: "11/06",
+    TrendIcon: "down",
+    cardTitle: "Conversion",
+    tooltip: "This card shows daily traffic",
+  });
+});
+
+app.post("/Get_ConversionMonthToDate", (req, res) => {
+  res.send({
+    Days: "Week To Date",
+    Difference: 11.1,
+    Current: 58974,
+    Date: "11/03 - 11/06",
+    TrendIcon: "up",
+    cardTitle: "Conversion",
+    tooltip: "This card shows week to date Conversion",
+  });
+});
+
+app.post("/Get_ConversionLastMonth", (req, res) => {
+  res.send({
+    Days: "Month To Date",
+    Difference: 4.02,
+    Current: 97500,
+    Date: "11/01 - 11/06",
+    TrendIcon: "up",
+    cardTitle: "Conversion",
+    tooltip: "This card shows month to date Conversion",
+  });
+});
+
+app.post("/Get_ConversionLastYear", (req, res) => {
+  res.send({
+    Days: "Year To Date",
+    Difference: -1.09,
+    Current: 4540420,
+    Date: "01/01 - 11/06",
+    TrendIcon: "down",
+    cardTitle: "Conversion",
+    tooltip: "This card shows year to date Conversion",
+  });
+});
+
+app.post("/Get_ComparisonWeekOverWeek", (req, res) => {
+  res.send({
+    series: [
+      {
+        name: "Previous Week",
+        color: "#DEDDDC",
+        data: [
+          525466, 502205, 567394, 472001, 400085, 459230, 392414, 437210,
+          465173, 458502, 464550, 472951, 474766,
+        ],
+        pointPadding: 0,
+      },
+      {
+        name: "Current Week",
+        color: "#4D79F6",
+        data: [
+          474766, 454273, 510074, 414989, 415594, 436023, 412135, 444599,
+          440360, 463935, 452612, 464088, 498585,
+        ],
+        pointPadding: 0.3,
+      },
+    ],
+    categories: [
+      "Oct-2023",
+      "Nov-2023",
+      "Dec-2023",
+      "Jan-2024",
+      "Feb-2024",
+      "Mar-2024",
+      "Apr-2024",
+      "May-2024",
+      "Jun-2024",
+      "Jul-2024",
+      "Aug-2024",
+      "Sep-2024",
+      "Oct-2024",
+    ],
+    chartTitle: "Week Over Week Comparison",
+    tooltip:
+      "It will show this year and last year actual values except for traffic which will only show avg traffic.",
+    text: "Conversion",
+  });
+});
+app.post("/Get_ComparisonMonthOverMonth", (req, res) => {
+  res.send({
+    series: [
+      {
+        name: "Previous Month",
+        color: "#DEDDDC",
+        data: [
+          525466, 502205, 567394, 472001, 400085, 459230, 392414, 437210,
+          465173, 458502, 464550, 472951, 474766,
+        ],
+        pointPadding: 0,
+      },
+      {
+        name: "Current Month",
+        color: "#4D79F6",
+        data: [
+          474766, 454273, 510074, 414989, 415594, 436023, 412135, 444599,
+          440360, 463935, 452612, 464088, 498585,
+        ],
+        pointPadding: 0.3,
+      },
+    ],
+    categories: [
+      "Oct-2023",
+      "Nov-2023",
+      "Dec-2023",
+      "Jan-2024",
+      "Feb-2024",
+      "Mar-2024",
+      "Apr-2024",
+      "May-2024",
+      "Jun-2024",
+      "Jul-2024",
+      "Aug-2024",
+      "Sep-2024",
+      "Oct-2024",
+    ],
+    chartTitle: "Month Over Month Comparison",
+    tooltip:
+      "It will show this year and last year actual values except for traffic which will only show avg traffic.",
+    text: "Conversion",
   });
 });
 
